@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void validate(String username,String password)
     {
-        if((username=="Admin")&& (password=="1234"))
+        if((username=="Admin") && (password=="1234"))
         {
-            Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+            Intent intent=new Intent(MainActivity.this, SecondActivity.class);
             startActivity(intent);
         }
         else
         {
             counter--;
-            Info.setText("No. off attempts remaining: "+String.valueOf(counter));
+            Info.setText("No. of attempts remaining: "+String.valueOf(counter));
             if(counter==0)
             {
                 Login.setEnabled(false); //disable counter after 5 attempts
