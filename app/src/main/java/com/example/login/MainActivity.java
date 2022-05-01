@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
         Password=(EditText)findViewById(R.id.etPassword);
         Info=(TextView) findViewById(R.id.tvInfo);
         Login=(Button)findViewById(R.id.btnLogin);
+
+        Info.setText("No. of attempts remaining: 5");
+        //setting on click listener
+
+        Login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                validate(Name.getText().toString(),Password.getText().toString());
+            }
+        });
     }
 
     private void validate(String username,String password)
@@ -37,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             counter--;
-
+            Info.setText("No. off attempts remaining: "+String.valueOf(counter));
             if(counter==0)
             {
                 Login.setEnabled(false); //disable counter after 5 attempts
